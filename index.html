@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15 Años - Jazmín Sena</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- GSAP y ScrollTrigger para animaciones profesionales -->
+    <!-- GSAP y ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+
+<body>
+
+    <!-- Portada / Hero -->
+    <header class="hero">
+        <div class="hero-content">
+            <span class="subtitle">Mis 15 Años</span>
+            <h1 class="title">Jazmín</h1>
+            <p class="date">20 . 02 . 2027</p>
+
+            <!-- Contador Regresivo -->
+            <div id="countdown" class="countdown"></div>
+        </div>
+    </header>
+
+    <!-- Ubicación / Mapa -->
+    <section class="card gsap-reveal">
+        <h2>Ubicación</h2>
+        <p class="salon-name">Salón de Fiestas y Eventos Girasol</p>
+        <p class="address">Gibraltar 4277, Montevideo</p>
+
+        <div class="map-wrapper">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3273.1925702177505!2d-56.26693052519643!3d-34.87651037195441!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a1d5907b464f93%3A0x75cd2611fbb682f3!2sSal%C3%B3n%20de%20Fiestas%20y%20Eventos%20Girasol!5e0!3m2!1ses!2suy!4v1787230996714!5m2!1ses!2suy"
+                width="100%" height="220" style="border:0; border-radius: 12px;" allowfullscreen="" loading="lazy">
+            </iframe>
+        </div>
+    </section>
+
+    <!-- Vestimenta / Dress Code -->
+    <section class="card gsap-reveal">
+        <h2>Código de Vestimenta</h2>
+        <span class="badge-dress">FORMAL</span>
+
+        <div class="restriction-box">
+            <p><strong>Atención:</strong> Por decisión de la cumpleañera, los colores <span class="tag-pink">Rosa</span>
+                y <span class="tag-blue">Azul</span> quedan reservados para su vestuario.</p>
+        </div>
+    </section>
+
+    <!-- Playlist Colaborativa de Spotify -->
+    <section class="card gsap-reveal">
+        <h2>Música de la Fiesta</h2>
+        <p>¡Queremos que bailes toda la noche! Sumá tus canciones preferidas a la lista oficial de la fiesta.</p>
+
+        <a href="[https://open.spotify.com/playlist/TU_PLAYLIST_ID?si=ejemplo&pt=link](https://open.spotify.com/playlist/TU_PLAYLIST_ID?si=ejemplo&pt=link)"
+            target="_blank" class="btn btn-spotify">
+            Abrir Playlist en Spotify
+        </a>
+    </section>
+
+    <!-- Regalos / Datos Bancarios -->
+    <section class="card gsap-reveal">
+        <h2>Regalos</h2>
+        <p>El mejor regalo es que compartas esta noche con nosotros. Si deseas hacerme un presente:</p>
+
+        <div class="bank-card">
+            <p class="alias-label">Alias / CBU para transferencia:</p>
+            <p id="alias-text" class="alias-code">jazmin.15.fiesta</p>
+            <button onclick="copyAlias()" class="btn-secondary">Copiar Datos</button>
+        </div>
+    </section>
+
+    <!-- Confirmación RSVP -->
+    <section class="card gsap-reveal">
+        <h2>Confirmación de Asistencia</h2>
+        <p>Por favor confirma tu presencia antes del 1 de Febrero de 2027.</p>
+        <a href="[https://wa.me/59899000000?text=Hola!%20Confirmo%20mi%20asistencia%20para%20los%2015%20de%20Jazmin](https://wa.me/59899000000?text=Hola!%20Confirmo%20mi%20asistencia%20para%20los%2015%20de%20Jazmin)"
+            target="_blank" class="btn btn-wsp">
+            Confirmar por WhatsApp
+        </a>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
