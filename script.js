@@ -1,10 +1,10 @@
-// Registrar Plugin
+// Registrar Plugin de GSAP
 gsap.registerPlugin(ScrollTrigger);
 
 // Fecha objetivo (20 de Febrero de 2027)
 const partyDate = new Date("Feb 20, 2027 21:00:00").getTime();
 
-// Función para renderizar el reloj de forma inmediata
+// Función para renderizar el reloj
 function updateCountdown() {
   const now = new Date().getTime();
   const diff = partyDate - now;
@@ -31,11 +31,11 @@ function updateCountdown() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  // 1. Iniciar los datos del reloj INMEDIATAMENTE antes de animar
+  // 1. Iniciar reloj inmediatamente
   updateCountdown();
   setInterval(updateCountdown, 1000);
 
-  // 2. Timeline de entrada escalonada para la portada
+  // 2. Animación de entrada para la portada
   const heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
   heroTl
@@ -47,30 +47,35 @@ document.addEventListener("DOMContentLoaded", () => {
       y: 25, 
       scale: 0.8,
       duration: 0.7, 
-      stagger: 0.15, // Cada cajita aparece 0.15s después de la anterior
-      ease: "back.out(1.4)" // Efecto elástico sutil
-    }, "-=0.4");
+      stagger: 0.15,
+      ease: "back.out(1.4)"
+    }, "-=0.4")
+    .from(".scroll-down", { opacity: 0, duration: 0.5 }, "-=0.2");
 
-  // 3. Animaciones al hacer Scroll (ScrollTrigger)
-  gsap.utils.toArray(".gsap-reveal").forEach((card) => {
+  // 3. Animaciones al hacer scroll entre secciones
+  gsap.utils.toArray(".gsap-reveal").forEach((section) => {
+    const card = section.querySelector(".card");
     gsap.from(card, {
       scrollTrigger: {
-        trigger: card,
-        start: "top 85%",
+        trigger: section,
+        start: "top 60%", // Se activa cuando la sección está bien centrada
         toggleActions: "play none none reverse"
       },
       duration: 0.8,
-      y: 35,
+      scale: 0.9,
+      y: 30,
       opacity: 0,
       ease: "power2.out"
     });
   });
 });
 
-// Función auxiliar para copiar el Alias
+// Copiar Alias al portapapeles
 function copyAlias() {
   const aliasText = document.getElementById("alias-text").innerText;
   navigator.clipboard.writeText(aliasText).then(() => {
     alert("¡Alias copiado al portapapeles!");
+  }).catch(() => {
+    alert("No se pudo copiar el alias.");
   });
 }

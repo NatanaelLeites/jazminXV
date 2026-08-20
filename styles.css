@@ -14,32 +14,41 @@
   padding: 0;
 }
 
-body {
+/* Configuración de Scroll por Páginas / Pantallas Completas */
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   background-color: var(--color-fondo);
   color: var(--color-texto);
-  padding-bottom: 40px;
+  scroll-behavior: smooth;
+  /* Scroll Snap Vertical Activado */
+  scroll-snap-type: y mandatory;
+}
+
+/* Regla para cada Pantalla Completa */
+.section-snap {
+  height: 100dvh;
+  width: 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always; /* Fuerza a no saltarse páginas al deslizar rápido */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 20px;
 }
 
 /* Hero / Portada */
-/* Hero / Portada con Foto de Fondo */
 .hero {
-  min-height: 85vh;
-  /* Ocupa casi toda la pantalla en celulares */
   background:
-    /* Degradado rosa y plata con transparencia (rgba) sobre la foto */
     linear-gradient(135deg,
       rgba(138, 59, 104, 0.65),
       rgba(168, 176, 186, 0.55)),
     url('./img/jazmin1.jpg') top/cover no-repeat;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   text-align: center;
   color: var(--color-blanco);
-  padding: 20px;
-  position: relative;
-  /* Sombra de texto suave para asegurar lectura rápida */
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
@@ -61,6 +70,23 @@ body {
   font-size: 1.2rem;
   letter-spacing: 2px;
   margin-bottom: 25px;
+}
+
+/* Flecha animada de scroll */
+.scroll-down {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.4rem;
+  opacity: 0.8;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); }
+  40% { transform: translate(-50%, -8px); }
+  60% { transform: translate(-50%, -4px); }
 }
 
 /* Cuenta Regresiva */
@@ -91,13 +117,13 @@ body {
 
 /* Tarjetas y Contenido */
 .card {
-  max-width: 500px;
-  margin: 20px auto;
+  width: 100%;
+  max-width: 450px;
   background: var(--color-blanco);
-  border-radius: 16px;
-  padding: 25px;
+  border-radius: 20px;
+  padding: 30px 25px;
   text-align: center;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
   border: 1px solid #ebd9e5;
 }
 
@@ -106,13 +132,27 @@ body {
   font-size: 1.3rem;
   text-transform: uppercase;
   letter-spacing: 1px;
-  margin-bottom: 12px;
+  margin-bottom: 15px;
+}
+
+.salon-name {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.address {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.map-wrapper {
+  margin-bottom: 15px;
 }
 
 /* Botones */
 .btn {
   display: inline-block;
-  margin-top: 15px;
   padding: 12px 24px;
   background-color: var(--color-rosa-oscuro);
   color: var(--color-blanco);
@@ -125,10 +165,12 @@ body {
 
 .btn-spotify {
   background-color: #1DB954;
+  margin-top: 15px;
 }
 
 .btn-wsp {
   background-color: #25D366;
+  margin-top: 15px;
 }
 
 .btn-secondary {
@@ -138,7 +180,7 @@ body {
   padding: 8px 16px;
   border-radius: 20px;
   cursor: pointer;
-  margin-top: 8px;
+  margin-top: 12px;
 }
 
 /* Restricción de colores */
@@ -146,11 +188,11 @@ body {
   display: inline-block;
   background: var(--color-plata-suave);
   color: var(--color-rosa-oscuro);
-  padding: 4px 12px;
+  padding: 6px 16px;
   border-radius: 12px;
   font-weight: bold;
   font-size: 0.85rem;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .restriction-box {
@@ -160,6 +202,7 @@ body {
   border-radius: 0 8px 8px 0;
   margin-top: 10px;
   font-size: 0.9rem;
+  text-align: left;
 }
 
 .tag-pink {
@@ -170,4 +213,23 @@ body {
 .tag-blue {
   color: #0d6efd;
   font-weight: bold;
+}
+
+.bank-card {
+  margin-top: 15px;
+  background: var(--color-plata-suave);
+  padding: 15px;
+  border-radius: 12px;
+}
+
+.alias-label {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.alias-code {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: var(--color-rosa-oscuro);
+  margin: 5px 0;
 }
