@@ -5,6 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>15 Años - Jazmín Sena</title>
+    
+    <!-- Fuentes Elegantes: Playfair Display + Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="styles.css">
 
     <!-- GSAP y ScrollTrigger -->
@@ -14,26 +20,26 @@
 
 <body>
 
-    <!-- Portada / Hero (Pantalla 1) -->
+    <!-- Portada / Hero -->
     <header class="hero section-snap">
+        <div class="hero-overlay"></div>
         <div class="hero-content">
             <span class="subtitle">Mis 15 Años</span>
             <h1 class="title">Jazmín</h1>
+            <div class="divider">✦</div>
             <p class="date">20 . 02 . 2027</p>
 
-            <!-- Contador Regresivo -->
             <div id="countdown" class="countdown"></div>
         </div>
 
-        <!-- Indicador de Scroll -->
         <div class="scroll-down">
             <span>↓</span>
         </div>
     </header>
 
-    <!-- Ubicación / Mapa (Pantalla 2) -->
+    <!-- Ubicación -->
     <section class="section-snap gsap-reveal">
-        <div class="card">
+        <div class="card glass-card">
             <h2>Ubicación</h2>
             <p class="salon-name">Salón de Fiestas y Eventos Girasol</p>
             <p class="address">Gibraltar 4277, Montevideo</p>
@@ -44,59 +50,58 @@
                     width="100%" height="200" style="border:0; border-radius: 12px;" allowfullscreen="" loading="lazy">
                 </iframe>
             </div>
-            <a href="https://maps.google.com/?q=Gibraltar+4277+Montevideo" target="_blank" class="btn">
+            <a href="https://maps.google.com/?q=Gibraltar+4277+Montevideo" target="_blank" class="btn btn-primary">
                 Cómo Llegar
             </a>
         </div>
     </section>
 
-    <!-- Vestimenta / Dress Code (Pantalla 3) -->
+    <!-- Vestimenta -->
     <section class="section-snap gsap-reveal">
-        <div class="card">
-            <h2>Código de Vestimenta</h2>
-            <span class="badge-dress">FORMAL</span>
+        <div class="card glass-card">
+            <h2>Dress Code</h2>
+            <span class="badge-dress">FORMAL & ELEGANTE</span>
 
             <div class="restriction-box">
-                <p><strong>Atención:</strong> Por decisión de la cumpleañera, los colores <span class="tag-pink">Rosa</span>
-                    y <span class="tag-blue">Azul</span> quedan reservados para su vestuario.</p>
+                <p><strong>Nota de Color:</strong> Los tonos <span class="tag-pink">Rosa</span> y <span class="tag-blue">Azul</span> se encuentran reservados de manera exclusiva para la cumpleañera.</p>
             </div>
         </div>
     </section>
 
-    <!-- Playlist Colaborativa de Spotify (Pantalla 4) -->
+    <!-- Playlist -->
     <section class="section-snap gsap-reveal">
-        <div class="card">
-            <h2>Música de la Fiesta</h2>
-            <p>¡Queremos que bailes toda la noche! Sumá tus canciones preferidas a la lista oficial de la fiesta.</p>
+        <div class="card glass-card">
+            <h2>Música de la Noche</h2>
+            <p class="card-desc">Queremos crear una noche inolvidable. Te invitamos a sugerir tus canciones favoritas para la fiesta.</p>
 
             <a href="https://open.spotify.com/playlist/TU_PLAYLIST_ID" target="_blank" class="btn btn-spotify">
-                Abrir Playlist en Spotify
+                Sugerir Canción
             </a>
         </div>
     </section>
 
-    <!-- Regalos / Datos Bancarios (Pantalla 5) -->
+    <!-- Regalos -->
     <section class="section-snap gsap-reveal">
-        <div class="card">
-            <h2>Regalos</h2>
-            <p>El mejor regalo es que compartas esta noche con nosotros. Si deseas hacerme un presente:</p>
+        <div class="card glass-card">
+            <h2>Muestras de Cariño</h2>
+            <p class="card-desc">Tu presencia es nuestro mejor regalo. Si deseas realizar un obsequio, puedes hacerlo a través de la siguiente cuenta:</p>
 
             <div class="bank-card">
-                <p class="alias-label">Alias / CBU para transferencia:</p>
+                <p class="alias-label">Alias Bancario</p>
                 <p id="alias-text" class="alias-code">jazmin.15.fiesta</p>
                 <button onclick="copyAlias()" class="btn-secondary">Copiar Datos</button>
             </div>
         </div>
     </section>
 
-    <!-- Confirmación RSVP (Pantalla 6) -->
+    <!-- Confirmación RSVP -->
     <section class="section-snap gsap-reveal">
-        <div class="card">
-            <h2>Confirmación de Asistencia</h2>
-            <p>Por favor confirma tu presencia antes del 1 de Febrero de 2027.</p>
+        <div class="card glass-card">
+            <h2>Confirmación</h2>
+            <p class="card-desc">Agradecemos confirmar tu asistencia antes del 1 de Febrero de 2027.</p>
             <a href="https://wa.me/59899000000?text=Hola!%20Confirmo%20mi%20asistencia%20para%20los%2015%20de%20Jazmin"
                 target="_blank" class="btn btn-wsp">
-                Confirmar por WhatsApp
+                Confirmar Asistencia
             </a>
         </div>
     </section>

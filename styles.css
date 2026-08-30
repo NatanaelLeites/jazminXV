@@ -1,11 +1,12 @@
 :root {
-  --color-rosa: #e8a5c2;
-  --color-rosa-oscuro: #8a3b68;
-  --color-plata: #a8b0ba;
-  --color-plata-suave: #f0f2f5;
-  --color-fondo: #faf7f9;
-  --color-texto: #2c2c2c;
+  --color-rosa-elegante: #d49ab4;
+  --color-rosa-profundo: #5c243d;
+  --color-fondo: #f6f3f5;
+  --color-texto: #332c30;
   --color-blanco: #ffffff;
+  
+  --font-titulo: 'Cormorant Garamond', serif;
+  --font-cuerpo: 'Montserrat', sans-serif;
 }
 
 * {
@@ -14,222 +15,265 @@
   padding: 0;
 }
 
-/* Configuración de Scroll por Páginas / Pantallas Completas */
 html, body {
-  height: 100%;
   width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
   overflow-x: hidden;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: var(--font-cuerpo);
   background-color: var(--color-fondo);
   color: var(--color-texto);
   scroll-behavior: smooth;
-  /* Scroll Snap Vertical Activado */
-  scroll-snap-type: y mandatory;
 }
 
-/* Regla para cada Pantalla Completa */
-.section-snap {
-  height: 100dvh;
+body {
+  overflow-y: hidden; /* O bien controlas el scroll a nivel de body solamente */
+}
+/* Hero / Portada Elegante */
+.hero {
+  min-height: 100dvh; /* Mantiene la portada ocupando toda la vista inicial */
   width: 100%;
-  scroll-snap-align: start;
-  scroll-snap-stop: always; /* Fuerza a no saltarse páginas al deslizar rápido */
+  background: url('./img/jazmin1.jpg') top center/cover no-repeat;
+  text-align: center;
+  color: var(--color-blanco);
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
-  padding: 20px;
+  padding: 24px;
 }
 
-/* Hero / Portada */
-.hero {
-  background:
-    linear-gradient(135deg,
-      rgba(138, 59, 104, 0.65),
-      rgba(168, 176, 186, 0.55)),
-    url('./img/jazmin1.jpg') top/cover no-repeat;
-  text-align: center;
-  color: var(--color-blanco);
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+.hero-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(
+    180deg, 
+    rgba(35, 18, 26, 0.45) 0%, 
+    rgba(92, 36, 61, 0.55) 60%, 
+    rgba(20, 15, 18, 0.8) 100%
+  );
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
 }
 
 .subtitle {
+  font-family: var(--font-cuerpo);
   text-transform: uppercase;
-  letter-spacing: 3px;
-  font-size: 0.9rem;
-  opacity: 0.9;
+  letter-spacing: 5px;
+  font-size: 0.85rem;
+  font-weight: 300;
+  opacity: 0.95;
 }
 
 .title {
-  font-size: 3rem;
-  font-weight: 300;
-  letter-spacing: 2px;
-  margin: 10px 0;
+  font-family: var(--font-titulo);
+  font-size: 4.2rem;
+  font-weight: 400;
+  letter-spacing: 3px;
+  margin: 5px 0;
+  font-style: italic;
+  text-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.divider {
+  font-size: 0.9rem;
+  color: var(--color-rosa-elegante);
+  margin-bottom: 10px;
 }
 
 .date {
-  font-size: 1.2rem;
-  letter-spacing: 2px;
-  margin-bottom: 25px;
+  font-size: 1.1rem;
+  letter-spacing: 4px;
+  margin-bottom: 30px;
+  font-weight: 300;
 }
 
-/* Flecha animada de scroll */
 .scroll-down {
   position: absolute;
-  bottom: 20px;
+  bottom: 25px;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 1.4rem;
-  opacity: 0.8;
-  animation: bounce 2s infinite;
+  font-size: 1.2rem;
+  z-index: 2;
+  opacity: 0.7;
+  animation: float 2.5s infinite;
 }
 
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); }
-  40% { transform: translate(-50%, -8px); }
-  60% { transform: translate(-50%, -4px); }
+@keyframes float {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, -8px); }
 }
 
-/* Cuenta Regresiva */
+/* Reloj Minimalista */
 .countdown {
   display: flex;
   justify-content: center;
-  gap: 12px;
+  gap: 15px;
 }
 
 .time-box {
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(8px);
-  padding: 10px 14px;
-  border-radius: 8px;
-  min-width: 60px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 12px 16px;
+  border-radius: 12px;
+  min-width: 65px;
 }
 
 .time-box span {
+  font-family: var(--font-titulo);
   display: block;
-  font-size: 1.5rem;
-  font-weight: bold;
+  font-size: 1.8rem;
+  font-weight: 600;
 }
 
 .time-box small {
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-/* Tarjetas y Contenido */
-.card {
+/* Secciones generales con espacio fluido */
+.section-wrapper {
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Tarjetas Estilo Cristal / Glassmorphism */
+.glass-card {
   width: 100%;
-  max-width: 450px;
-  background: var(--color-blanco);
-  border-radius: 20px;
-  padding: 30px 25px;
+  max-width: 440px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 24px;
+  padding: 35px 28px;
   text-align: center;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-  border: 1px solid #ebd9e5;
+  box-shadow: 0 15px 35px rgba(92, 36, 61, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.6);
 }
 
 .card h2 {
-  color: var(--color-rosa-oscuro);
-  font-size: 1.3rem;
-  text-transform: uppercase;
+  font-family: var(--font-titulo);
+  color: var(--color-rosa-profundo);
+  font-size: 2rem;
+  font-weight: 600;
   letter-spacing: 1px;
   margin-bottom: 15px;
 }
 
+.card-desc {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 15px;
+}
+
 .salon-name {
+  font-family: var(--font-titulo);
+  font-size: 1.3rem;
   font-weight: 600;
-  margin-bottom: 4px;
+  color: var(--color-texto);
 }
 
 .address {
-  font-size: 0.9rem;
-  color: #666;
-  margin-bottom: 15px;
+  font-size: 0.85rem;
+  color: #777;
+  margin-bottom: 18px;
+  letter-spacing: 0.5px;
 }
 
-.map-wrapper {
-  margin-bottom: 15px;
-}
-
-/* Botones */
+/* Botones Refinados */
 .btn {
   display: inline-block;
-  padding: 12px 24px;
-  background-color: var(--color-rosa-oscuro);
-  color: var(--color-blanco);
+  padding: 14px 28px;
+  border-radius: 30px;
+  font-family: var(--font-cuerpo);
+  font-weight: 500;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
   text-decoration: none;
-  border-radius: 25px;
-  font-weight: 600;
-  font-size: 0.9rem;
-  transition: transform 0.2s ease, background-color 0.2s ease;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--color-rosa-profundo);
+  color: var(--color-blanco);
+  box-shadow: 0 6px 18px rgba(92, 36, 61, 0.2);
 }
 
 .btn-spotify {
   background-color: #1DB954;
-  margin-top: 15px;
+  color: var(--color-blanco);
 }
 
 .btn-wsp {
   background-color: #25D366;
-  margin-top: 15px;
+  color: var(--color-blanco);
 }
 
 .btn-secondary {
-  background: var(--color-plata-suave);
-  color: var(--color-texto);
-  border: 1px solid var(--color-plata);
-  padding: 8px 16px;
-  border-radius: 20px;
-  cursor: pointer;
-  margin-top: 12px;
+  background: #ffffff;
+  color: var(--color-rosa-profundo);
+  border: 1px solid var(--color-rosa-elegante);
+  padding: 10px 20px;
+  margin-top: 10px;
 }
 
-/* Restricción de colores */
+/* Detalles */
 .badge-dress {
   display: inline-block;
-  background: var(--color-plata-suave);
-  color: var(--color-rosa-oscuro);
-  padding: 6px 16px;
-  border-radius: 12px;
-  font-weight: bold;
-  font-size: 0.85rem;
-  margin-bottom: 15px;
+  border: 1px solid var(--color-rosa-elegante);
+  color: var(--color-rosa-profundo);
+  padding: 6px 18px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
 }
 
 .restriction-box {
-  background: #fff0f5;
-  border-left: 4px solid var(--color-rosa);
-  padding: 12px;
-  border-radius: 0 8px 8px 0;
-  margin-top: 10px;
-  font-size: 0.9rem;
+  background: rgba(212, 154, 180, 0.1);
+  border-left: 3px solid var(--color-rosa-elegante);
+  padding: 14px;
+  border-radius: 0 12px 12px 0;
+  font-size: 0.85rem;
+  line-height: 1.5;
   text-align: left;
 }
 
-.tag-pink {
-  color: #d63384;
-  font-weight: bold;
-}
-
-.tag-blue {
-  color: #0d6efd;
-  font-weight: bold;
-}
+.tag-pink { color: #c25283; font-weight: 600; }
+.tag-blue { color: #3b71ca; font-weight: 600; }
 
 .bank-card {
-  margin-top: 15px;
-  background: var(--color-plata-suave);
-  padding: 15px;
-  border-radius: 12px;
+  background: rgba(240, 242, 245, 0.6);
+  padding: 18px;
+  border-radius: 16px;
+  border: 1px solid #eaeaea;
 }
 
 .alias-label {
-  font-size: 0.85rem;
-  color: #666;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #888;
 }
 
 .alias-code {
-  font-size: 1.1rem;
-  font-weight: bold;
-  color: var(--color-rosa-oscuro);
-  margin: 5px 0;
+  font-family: var(--font-titulo);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--color-rosa-profundo);
+  margin: 6px 0;
 }
