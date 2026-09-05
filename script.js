@@ -1,10 +1,6 @@
-// Registrar Plugin
-gsap.registerPlugin(ScrollTrigger);
-
 // Fecha objetivo (20 de Febrero de 2027)
 const partyDate = new Date("Feb 20, 2027 21:00:00").getTime();
 
-// Función para renderizar el reloj de forma inmediata
 function updateCountdown() {
   const now = new Date().getTime();
   const diff = partyDate - now;
@@ -31,11 +27,11 @@ function updateCountdown() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  // 1. Iniciar los datos del reloj INMEDIATAMENTE antes de animar
+  // 1. Inicializar reloj
   updateCountdown();
   setInterval(updateCountdown, 1000);
 
-  // 2. Timeline de entrada escalonada para la portada
+  // 2. Animación de entrada de la portada únicamente
   const heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
   heroTl
@@ -47,27 +43,12 @@ document.addEventListener("DOMContentLoaded", () => {
       y: 25, 
       scale: 0.8,
       duration: 0.7, 
-      stagger: 0.15, // Cada cajita aparece 0.15s después de la anterior
-      ease: "back.out(1.4)" // Efecto elástico sutil
+      stagger: 0.15,
+      ease: "back.out(1.4)"
     }, "-=0.4");
-
-  // 3. Animaciones al hacer Scroll (ScrollTrigger)
-  gsap.utils.toArray(".gsap-reveal").forEach((card) => {
-    gsap.from(card, {
-      scrollTrigger: {
-        trigger: card,
-        start: "top 85%",
-        toggleActions: "play none none reverse"
-      },
-      duration: 0.8,
-      y: 35,
-      opacity: 0,
-      ease: "power2.out"
-    });
-  });
 });
 
-// Función auxiliar para copiar el Alias
+// Copiar Alias Bancario
 function copyAlias() {
   const aliasText = document.getElementById("alias-text").innerText;
   navigator.clipboard.writeText(aliasText).then(() => {

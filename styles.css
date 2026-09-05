@@ -1,9 +1,10 @@
 :root {
-  --color-rosa-elegante: #d49ab4;
-  --color-rosa-profundo: #5c243d;
-  --color-fondo: #f6f3f5;
-  --color-texto: #332c30;
-  --color-blanco: #ffffff;
+  --color-rosa-elegante: #e8b4c8;
+  --color-oro-rosa: #d4af37;
+  --color-fondo-oscuro: #170d13;
+  --color-fondo-tarjeta: rgba(255, 255, 255, 0.04);
+  --color-texto-principal: #fceef3;
+  --color-texto-secundario: #cbb2bc;
   
   --font-titulo: 'Cormorant Garamond', serif;
   --font-cuerpo: 'Montserrat', sans-serif;
@@ -15,33 +16,33 @@
   padding: 0;
 }
 
-html, body {
-  width: 100%;
-  min-height: 100vh;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-  font-family: var(--font-cuerpo);
-  background-color: var(--color-fondo);
-  color: var(--color-texto);
-  scroll-behavior: smooth;
+html {
+  height: 100%;
+  overflow: hidden;
 }
 
 body {
-  overflow-y: hidden; /* O bien controlas el scroll a nivel de body solamente */
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  font-family: var(--font-cuerpo);
+  background-color: var(--color-fondo-oscuro);
+  color: var(--color-texto-principal);
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
 }
-/* Hero / Portada Elegante */
+
+/* Portada / Hero */
 .hero {
-  min-height: 100dvh; /* Mantiene la portada ocupando toda la vista inicial */
+  min-height: 100dvh;
   width: 100%;
-  background: url('./img/jazmin1.jpg') top center/cover no-repeat;
+  background: url('./img/jazmin1.jpg') no-repeat center 15% / cover;
   text-align: center;
-  color: var(--color-blanco);
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   position: relative;
-  padding: 24px;
+  padding: 40px 24px 60px 24px;
 }
 
 .hero-overlay {
@@ -49,9 +50,9 @@ body {
   top: 0; left: 0; right: 0; bottom: 0;
   background: linear-gradient(
     180deg, 
-    rgba(35, 18, 26, 0.45) 0%, 
-    rgba(92, 36, 61, 0.55) 60%, 
-    rgba(20, 15, 18, 0.8) 100%
+    rgba(23, 13, 19, 0.3) 0%, 
+    rgba(23, 13, 19, 0.75) 65%, 
+    var(--color-fondo-oscuro) 100%
   );
   z-index: 1;
 }
@@ -59,48 +60,52 @@ body {
 .hero-content {
   position: relative;
   z-index: 2;
+  margin-bottom: 20px;
 }
 
 .subtitle {
   font-family: var(--font-cuerpo);
   text-transform: uppercase;
-  letter-spacing: 5px;
-  font-size: 0.85rem;
+  letter-spacing: 6px;
+  font-size: 0.8rem;
   font-weight: 300;
-  opacity: 0.95;
+  color: var(--color-rosa-elegante);
 }
 
 .title {
   font-family: var(--font-titulo);
-  font-size: 4.2rem;
+  font-size: 4.5rem;
   font-weight: 400;
-  letter-spacing: 3px;
-  margin: 5px 0;
+  letter-spacing: 4px;
+  margin: 10px 0;
   font-style: italic;
-  text-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  text-shadow: 0 4px 20px rgba(0,0,0,0.5);
 }
 
 .divider {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: var(--color-rosa-elegante);
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  opacity: 0.8;
 }
 
 .date {
   font-size: 1.1rem;
-  letter-spacing: 4px;
-  margin-bottom: 30px;
+  letter-spacing: 5px;
+  margin-bottom: 35px;
   font-weight: 300;
+  color: var(--color-texto-secundario);
 }
 
 .scroll-down {
   position: absolute;
-  bottom: 25px;
+  bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
   font-size: 1.2rem;
   z-index: 2;
-  opacity: 0.7;
+  color: var(--color-rosa-elegante);
+  opacity: 0.8;
   animation: float 2.5s infinite;
 }
 
@@ -117,163 +122,198 @@ body {
 }
 
 .time-box {
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  padding: 12px 16px;
-  border-radius: 12px;
-  min-width: 65px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(232, 180, 200, 0.2);
+  padding: 14px 18px;
+  border-radius: 16px;
+  min-width: 70px;
 }
 
 .time-box span {
   font-family: var(--font-titulo);
   display: block;
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: 600;
+  color: #fff;
 }
 
 .time-box small {
   font-size: 0.65rem;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
+  color: var(--color-rosa-elegante);
 }
 
-/* Secciones generales con espacio fluido */
-.section-wrapper {
-  padding: 40px 20px;
+/* Secciones */
+.section-snap {
+  min-height: 80vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 60px 20px;
+  position: relative;
 }
 
-/* Tarjetas Estilo Cristal / Glassmorphism */
 .glass-card {
   width: 100%;
-  max-width: 440px;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-radius: 24px;
-  padding: 35px 28px;
+  max-width: 500px;
+  background: var(--color-fondo-tarjeta);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 28px;
+  padding: 45px 30px;
   text-align: center;
-  box-shadow: 0 15px 35px rgba(92, 36, 61, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .card h2 {
   font-family: var(--font-titulo);
-  color: var(--color-rosa-profundo);
-  font-size: 2rem;
-  font-weight: 600;
-  letter-spacing: 1px;
-  margin-bottom: 15px;
-}
-
-.card-desc {
-  font-size: 0.9rem;
-  line-height: 1.6;
-  color: #555;
-  margin-bottom: 15px;
-}
-
-.salon-name {
-  font-family: var(--font-titulo);
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: var(--color-texto);
-}
-
-.address {
-  font-size: 0.85rem;
-  color: #777;
-  margin-bottom: 18px;
-  letter-spacing: 0.5px;
-}
-
-/* Botones Refinados */
-.btn {
-  display: inline-block;
-  padding: 14px 28px;
-  border-radius: 30px;
-  font-family: var(--font-cuerpo);
-  font-weight: 500;
-  font-size: 0.85rem;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  border: none;
-  cursor: pointer;
-}
-
-.btn-primary {
-  background: var(--color-rosa-profundo);
-  color: var(--color-blanco);
-  box-shadow: 0 6px 18px rgba(92, 36, 61, 0.2);
-}
-
-.btn-spotify {
-  background-color: #1DB954;
-  color: var(--color-blanco);
-}
-
-.btn-wsp {
-  background-color: #25D366;
-  color: var(--color-blanco);
-}
-
-.btn-secondary {
-  background: #ffffff;
-  color: var(--color-rosa-profundo);
-  border: 1px solid var(--color-rosa-elegante);
-  padding: 10px 20px;
-  margin-top: 10px;
-}
-
-/* Detalles */
-.badge-dress {
-  display: inline-block;
-  border: 1px solid var(--color-rosa-elegante);
-  color: var(--color-rosa-profundo);
-  padding: 6px 18px;
-  border-radius: 20px;
-  font-size: 0.75rem;
+  color: var(--color-rosa-elegante);
+  font-size: 2.3rem;
+  font-weight: 400;
   letter-spacing: 2px;
   margin-bottom: 20px;
 }
 
-.restriction-box {
-  background: rgba(212, 154, 180, 0.1);
-  border-left: 3px solid var(--color-rosa-elegante);
-  padding: 14px;
-  border-radius: 0 12px 12px 0;
-  font-size: 0.85rem;
-  line-height: 1.5;
-  text-align: left;
+.card-desc {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--color-texto-secundario);
+  margin-bottom: 25px;
+  font-weight: 300;
 }
 
-.tag-pink { color: #c25283; font-weight: 600; }
-.tag-blue { color: #3b71ca; font-weight: 600; }
+.salon-name {
+  font-family: var(--font-titulo);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 5px;
+}
 
-.bank-card {
-  background: rgba(240, 242, 245, 0.6);
-  padding: 18px;
+.address {
+  font-size: 0.9rem;
+  color: var(--color-texto-secundario);
+  margin-bottom: 25px;
+  letter-spacing: 0.5px;
+}
+
+.map-wrapper {
+  margin-bottom: 25px;
   border-radius: 16px;
-  border: 1px solid #eaeaea;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  filter: grayscale(80%) invert(90%) hue-rotate(180deg);
+}
+
+/* Botones */
+.btn {
+  display: inline-block;
+  padding: 14px 32px;
+  border-radius: 30px;
+  font-family: var(--font-cuerpo);
+  font-weight: 500;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  border: 1px solid rgba(232, 180, 200, 0.4);
+  background: rgba(232, 180, 200, 0.1);
+  color: #fff;
+}
+
+.btn:hover {
+  background: var(--color-rosa-elegante);
+  color: var(--color-fondo-oscuro);
+  box-shadow: 0 0 20px rgba(232, 180, 200, 0.4);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--color-rosa-elegante);
+  border: 1px solid rgba(232, 180, 200, 0.3);
+  padding: 10px 22px;
+  margin-top: 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: rgba(232, 180, 200, 0.15);
+}
+
+/* Dress Code */
+.badge-dress {
+  display: inline-block;
+  border: 1px solid rgba(232, 180, 200, 0.4);
+  color: var(--color-rosa-elegante);
+  padding: 8px 22px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  margin-bottom: 25px;
+}
+
+.restriction-box {
+  background: rgba(255, 255, 255, 0.02);
+  border-left: 2px solid var(--color-rosa-elegante);
+  padding: 18px;
+  border-radius: 0 16px 16px 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  text-align: left;
+  color: var(--color-texto-secundario);
+}
+
+.tag-pink { color: #f2a6c8; font-weight: 500; }
+.tag-blue { color: #8ab4f8; font-weight: 500; }
+
+/* Tarjeta Bancaria */
+.bank-card {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 22px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .alias-label {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  color: #888;
+  letter-spacing: 2px;
+  color: var(--color-texto-secundario);
 }
 
 .alias-code {
   font-family: var(--font-titulo);
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   font-weight: 600;
-  color: var(--color-rosa-profundo);
-  margin: 6px 0;
+  color: #fff;
+  margin: 8px 0;
+  letter-spacing: 1px;
+}
+
+/* Responsivo para móviles */
+@media (max-width: 600px) {
+  .hero {
+    background-position: center 8%;
+  }
+
+  .title {
+    font-size: 3.6rem;
+  }
+
+  .time-box {
+    padding: 10px 14px;
+    min-width: 58px;
+  }
+
+  .time-box span {
+    font-size: 1.6rem;
+  }
 }
