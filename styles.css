@@ -32,8 +32,9 @@ body {
   -webkit-overflow-scrolling: touch;
 }
 
-/* Portada / Hero */
+/* Portada / Hero: Mantiene 100% Pantalla Completa */
 .hero {
+  min-height: 100vh;
   min-height: 100dvh;
   width: 100%;
   background: url('./img/jazmin1.jpg') no-repeat center 15% / cover;
@@ -146,14 +147,26 @@ body {
   color: var(--color-rosa-elegante);
 }
 
-/* Secciones */
+/* Secciones Compactas */
 .section-snap {
-  min-height: 80vh;
+  min-height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 60px 20px;
+  padding: 35px 20px;
   position: relative;
+}
+
+/* Separador sutil solo entre las secciones del contenido (excluye la portada) */
+.section-snap:not(.hero):not(:last-child)::after {
+  content: "✦";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--color-rosa-elegante);
+  font-size: 0.7rem;
+  opacity: 0.3;
 }
 
 .glass-card {
@@ -316,4 +329,26 @@ body {
   .time-box span {
     font-size: 1.6rem;
   }
+}
+
+/* Notificación Toast Elegante */
+.custom-toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(23, 13, 19, 0.9);
+  color: var(--color-rosa-elegante);
+  border: 1px solid rgba(232, 180, 200, 0.3);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-family: var(--font-cuerpo);
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  pointer-events: none;
+  white-space: nowrap;
 }

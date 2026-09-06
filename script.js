@@ -48,10 +48,40 @@ document.addEventListener("DOMContentLoaded", () => {
     }, "-=0.4");
 });
 
-// Copiar Alias Bancario
+// Copiar Alias Bancario con notificación personalizada
 function copyAlias() {
   const aliasText = document.getElementById("alias-text").innerText;
+  
   navigator.clipboard.writeText(aliasText).then(() => {
-    alert("¡Alias copiado al portapapeles!");
+    showToast("¡Alias copiado al portapapeles! ✨");
   });
+}
+
+function showToast(message) {
+  // Eliminar toast anterior si existe para evitar duplicados
+  const existingToast = document.querySelector(".custom-toast");
+  if (existingToast) existingToast.remove();
+
+  // Crear el elemento toast
+  const toast = document.createElement("div");
+  toast.className = "custom-toast";
+  toast.innerText = message;
+  document.body.appendChild(toast);
+
+  // Animar entrada con GSAP
+  gsap.fromTo(toast, 
+    { opacity: 0, y: 30 }, 
+    { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }
+  );
+
+  // Desvanecer y remover después de 3 segundos
+  setTimeout(() => {
+    gsap.to(toast, {
+      opacity: 0,
+      y: 20,
+      duration: 0.4,
+      ease: "power2.in",
+      onComplete: () => toast.remove()
+    });
+  }, 3000);
 }
